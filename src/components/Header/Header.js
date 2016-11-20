@@ -1,10 +1,17 @@
 import React from 'react'
 import { IndexLink, Link } from 'react-router'
+import OwlImage from '../../routes/Home/assets/owl.jpg'
 import './Header.scss'
 
 export const Header = () => (
   <div>
-    <h1>React Redux Starter Kit</h1>
+    <span id='app-title'>Owl my photos</span>
+    <img
+      alt='This is a owl!'
+      className='owl'
+      src={OwlImage}
+      width='200px'
+      height='200px' />
     <IndexLink to='/' activeClassName='route--active'>
       Home
     </IndexLink>
