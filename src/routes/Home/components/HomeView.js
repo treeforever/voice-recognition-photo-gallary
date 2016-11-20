@@ -1,33 +1,27 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import Grid from './Grid'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-// import MuiTheme from '../../../components/MuiTheme'
+import MuiTheme from '../../../components/MuiTheme'
+import MicFile from './Mic'
 import './HomeView.scss'
 
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import { green100, green500, green700 } from 'material-ui/styles/colors'
-
-const MuiTheme = getMuiTheme({
-  palette: {
-    primary1Color: green500,
-    primary2Color: green700,
-    primary3Color: green100,
-    fontFamily: 'Josefin Sans'
-  }
-}, {
-  avatar: {
-    borderColor: null
-  },
-  userAgent: 'all'
-})
-
 export const HomeView = () => (
-  <div>
-
-    <MuiThemeProvider muiTheme={MuiTheme}>
+  <MuiThemeProvider muiTheme={MuiTheme}>
+    <div>
+      <MicFile.Mic />
+      <MicFile.MicOff />
       <Grid />
-    </MuiThemeProvider>
-  </div>
+    </div>
+  </MuiThemeProvider>
 )
 
-export default HomeView
+const mapDispatchToProps = {
+
+}
+
+const mapStateToProps = (state) => ({
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeView)
