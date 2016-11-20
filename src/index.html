@@ -1,10 +1,28 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <title>React Redux Starter Kit</title>
+  <title>Owl photos</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
+  <script>
+    if (annyang) {
+      // Let's define our first command. First the text we expect, and then the function it should call
+      var commands = {
+        'show me a photo': function() {
+          console.log('I heard you')
+        }
+      };
+      annyang.init(commands);
+
+      // Add our commands to annyang
+      annyang.addCommands(commands);
+
+      // Start listening. You can call this here, or attach this call to an event, button, etc.
+      annyang.start();
+    }
+  </script>
 </head>
 <body>
   <div id="root" style="height: 100%"></div>
