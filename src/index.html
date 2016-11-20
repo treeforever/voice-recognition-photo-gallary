@@ -10,8 +10,14 @@
     if (annyang) {
       // Let's define our first command. First the text we expect, and then the function it should call
       var commands = {
+        'hello': function(){
+          console.log('Hello! How can I help you?')
+        },
         'show me a photo': function() {
           console.log('I heard you')
+        },
+        'show me all photos': () => {
+          console.log('Coming right up!')
         }
       };
       annyang.init(commands);
