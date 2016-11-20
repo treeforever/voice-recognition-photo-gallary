@@ -7,13 +7,16 @@ import StarBorder from 'material-ui/svg-icons/toggle/star-border'
 const styles = {
   root: {
     display: 'flex',
+    'flex-direction': 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around'
   },
   gridList: {
+    display: 'flex',
+    flexWrap: 'nowrap',
     width: 500,
     height: 450,
-    overflowY: 'auto'
+    overflowX: 'auto'
   }
 }
 
