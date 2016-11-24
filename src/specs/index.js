@@ -1,0 +1,1 @@
+const S = require('specky')
