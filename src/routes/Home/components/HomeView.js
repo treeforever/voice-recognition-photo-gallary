@@ -66,7 +66,7 @@ class HomeView extends SpeckyComponent {
   })
 
   render () {
-    console.log('hh', this.props.micOn, this.props.state)
+    // console.log('hh', this.props.micOn, this.props.state)
     return (
       <MuiThemeProvider muiTheme={MuiTheme}>
         <div>
@@ -89,7 +89,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-    micOn: state.mic.micOn,
+    micOn: state.mic,
     state: state
   }
 }

@@ -3,9 +3,9 @@ const defaultState = {
 }
 
 export default function reducer (state = defaultState, action) {
+  // console.log('sttttt type is', action.type)
   switch (action.type) {
     case 'TURN_ON_MIC': {
-      console.log('yes')
       return {
         ...state,
         micOn: true

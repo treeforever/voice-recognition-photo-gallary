@@ -1,14 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import createStore from './store/createStore'
 import AppContainer from './containers/AppContainer'
-
+import store from './store/createStore'
 // ========================================================
 // Store Instantiation
 // ========================================================
-const initialState = window.___INITIAL_STATE__
-const store = createStore(initialState)
-
 // ========================================================
 // Render Setup
 // ========================================================
