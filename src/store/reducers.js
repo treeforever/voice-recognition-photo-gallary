@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
 import mic from './micReducer'
 
-const rootReducer = combineReducers({
-  mic
-})
+export const rootReducer = (asyncReducers) => {
+  return combineReducers({
+    mic
+  })
+}
 
 export default rootReducer

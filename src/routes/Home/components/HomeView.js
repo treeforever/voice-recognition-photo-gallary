@@ -32,7 +32,7 @@ const tilesData = [
     author: 'fancycrave1'
   }
 ]
-
+console.log('aaaaa', annyang)
 if (annyang) {
   // Let's define our first command. First the text we expect, and then the function it should call
   var commands = {
@@ -66,12 +66,11 @@ class HomeView extends SpeckyComponent {
   })
 
   render () {
-    // console.log('hh', this.props.micOn, this.props.state)
     return (
       <MuiThemeProvider muiTheme={MuiTheme}>
         <div>
           <MicFile.Mic onClick={this.props.turnOnMic} />
-          <MicFile.MicOff />
+          <MicFile.MicOff onClick={this.props.turnOffMic} />
           <Grid tilesData={tilesData} />
         </div>
       </MuiThemeProvider>
@@ -89,7 +88,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-    micOn: state.mic,
+    micOn: state.mic.micOn,
     state: state
   }
 }
