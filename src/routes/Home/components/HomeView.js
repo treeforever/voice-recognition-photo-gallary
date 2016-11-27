@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { turnOnMic, turnOffMic } from '../../../actions/actions'
+import { turnOnMic, turnOffMic } from '../../../actions/micActions'
+import { hello, showAPhoto, showPhotos } from '../../../actions/photoActions'
 import Grid from './Grid'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import MuiTheme from '../../../components/MuiTheme'
@@ -33,27 +34,6 @@ const tilesData = [
   }
 ]
 console.log('aaaaa', annyang)
-if (annyang) {
-  // Let's define our first command. First the text we expect, and then the function it should call
-  var commands = {
-    'hello': function () {
-      console.log('Hello! How can I help you?')
-    },
-    'show me a photo': function () {
-      console.log('I heard you')
-    },
-    'show me all photos': () => {
-      console.log('Coming right up!')
-    }
-  }
-  annyang.init(commands)
-
-  // Add our commands to annyang
-  annyang.addCommands(commands)
-
-  // Start listening. You can call this here, or attach this call to an event, button, etc.
-  annyang.start()
-}
 
 class HomeView extends SpeckyComponent {
   static propSpecs = S.props({
@@ -64,13 +44,46 @@ class HomeView extends SpeckyComponent {
 
     }
   })
+  handleMicOnClick = () => {
+    if (!this.props.micOn) {
+      this.props.turnOnMic()
+    }
+  }
+
+  handleMicOffClick = () => {
+    if (this.props.micOn) {
+      this.props.turnOffMic()
+    }
+  }
+
+  if (annyang) {
+    // Let's define our first command. First the text we expect, and then the function it should call
+    var commands = {
+      'hello': function () {
+        this.props.hello()
+      },
+      'show me a photo': function () {
+        this.props.showAPhoto()
+      },
+      'show me all photos': () => {
+        this.props.showPhotos()
+      }
+    }
+    annyang.init(commands)
+
+    // Add our commands to annyang
+    annyang.addCommands(commands)
+
+    // Start listening. You can call this here, or attach this call to an event, button, etc.
+    annyang.start()
+  }
 
   render () {
     return (
       <MuiThemeProvider muiTheme={MuiTheme}>
         <div>
-          <MicFile.Mic onClick={this.props.turnOnMic} />
-          <MicFile.MicOff onClick={this.props.turnOffMic} />
+          <MicFile.Mic onClick={this.handleMicOnClick} />
+          <MicFile.MicOff onClick={this.handleMicOffClick} />
           <Grid tilesData={tilesData} />
         </div>
       </MuiThemeProvider>
@@ -82,7 +95,10 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
       turnOnMic,
-      turnOffMic
+      turnOffMic,
+      hello,
+      showAPhoto,
+      showPhotos
     }, dispatch)
 }
 
