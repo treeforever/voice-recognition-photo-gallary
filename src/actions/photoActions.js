@@ -15,3 +15,9 @@ export function showPhotos () {
     type: 'SHOW_PHOTOS'
   }
 }
+
+export function flickrPublicPhotos () {
+  return {
+    type: 'FLICKR_GET_PUBLIC_PHOTOS'
+  }
+}

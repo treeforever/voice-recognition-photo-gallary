@@ -2,14 +2,20 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { turnOnMic, turnOffMic } from '../../../actions/micActions'
-import { hello, showAPhoto, showPhotos } from '../../../actions/photoActions'
+import { hello, showAPhoto, showPhotos, flickrPublicPhotos } from '../../../actions/photoActions'
 import Grid from './Grid'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import MuiTheme from '../../../components/MuiTheme'
 import MicFile from './Mic'
 import './HomeView.scss'
 import SpeckyComponent from '../../../SpeckyComponent'
+
 const S = require('specky')
+
+// Your contact IDs:
+// 122593843@N04 - Images from the Wild
+// 9085558@N03 - Outdoortype.photo
+// 44351311@N04 - Susan Licht
 
 const tilesData = [
   {
@@ -33,7 +39,7 @@ const tilesData = [
     author: 'fancycrave1'
   }
 ]
-console.log('aaaaa', annyang)
+console.log('annyang', annyang)
 
 class HomeView extends SpeckyComponent {
   static propSpecs = S.props({
@@ -47,6 +53,7 @@ class HomeView extends SpeckyComponent {
   handleMicOnClick = () => {
     if (!this.props.micOn) {
       this.props.turnOnMic()
+      this.props.flickrPublicPhotos()
     }
   }
 
@@ -98,7 +105,8 @@ const mapDispatchToProps = (dispatch) => {
       turnOffMic,
       hello,
       showAPhoto,
-      showPhotos
+      showPhotos,
+      flickrPublicPhotos
     }, dispatch)
 }
 
