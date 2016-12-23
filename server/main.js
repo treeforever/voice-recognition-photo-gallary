@@ -4,6 +4,11 @@ const webpack = require('webpack')
 const webpackConfig = require('../build/webpack.config')
 const config = require('../config')
 const compress = require('compression')
+const request = require('request')
+const bodyParser = require('body-parser')
+const jsonParser = bodyParser.json()
+// const Flickr = require('flickrapi')
+require('dotenv').config()
 
 const app = express()
 const paths = config.utils_paths
@@ -53,5 +58,32 @@ if (config.env === 'development') {
   // server in production.
   app.use(express.static(paths.dist()))
 }
+
+// flickr api
+app.post('/flickr', function (req, res) {
+  // const flickrOptions = {
+  //   api_key: process.env.FLICKR_API_KEY,
+  //   secret: process.env.FLICKR_SECRET
+  // }
+  //
+  // Flickr.authenticate(flickrOptions, (error, flickr) => {
+  //   // we can now use "flickr" as our API object
+  //   console.log('inside Flickr method')
+  //   flickr.people.getPublicPhotos({
+  //     user_id: '122593843@N04',
+  //     page: 1,
+  //     per_page: 20
+  //   }, (err, result) => {
+  //     if (err) {
+  //       throw new Error('error from flickr.people.getPublicPhotos')
+  //     }
+  //     console.log('response from flickr:', result)
+  //   })
+  // })
+  let statusCode = null
+  request
+    .get('https://api.flickr.com/services/rest/?method=flickr.people.getPublicPhotos&api_key=024a137e692e59cf1392e00dad1c486e&user_id=139501920%40N07&format=json&nojsoncallback=1&auth_token=72157678171713655-0ba9f7256abc8590&api_sig=30ca7a77ffb82ada7e6d48446b7541e2')
+    .pipe(res)
+})
 
 module.exports = app

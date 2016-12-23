@@ -2,10 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { turnOnMic, turnOffMic } from '../../../actions/micActions'
-import { hello, showAPhoto, showPhotos, flickrPublicPhotos } from '../../../actions/photoActions'
+import { hello, showAPhoto, showPhotos, flickrPublicPhotos, handleSearch } from '../../../actions/photoActions'
 import Grid from './Grid'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import MuiTheme from '../../../components/MuiTheme'
+import RaisedButton from 'material-ui/RaisedButton'
 import MicFile from './Mic'
 import './HomeView.scss'
 import SpeckyComponent from '../../../SpeckyComponent'
@@ -91,6 +92,10 @@ class HomeView extends SpeckyComponent {
         <div>
           <MicFile.Mic onClick={this.handleMicOnClick} />
           <MicFile.MicOff onClick={this.handleMicOffClick} />
+          <RaisedButton
+            onTouchTap={this.props.handleSearch()}
+            label='Search'
+             />
           <Grid tilesData={tilesData} />
         </div>
       </MuiThemeProvider>
@@ -106,7 +111,8 @@ const mapDispatchToProps = (dispatch) => {
       hello,
       showAPhoto,
       showPhotos,
-      flickrPublicPhotos
+      flickrPublicPhotos,
+      handleSearch
     }, dispatch)
 }
 
