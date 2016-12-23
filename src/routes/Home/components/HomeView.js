@@ -12,8 +12,8 @@ injectTapEventPlugin()
 import MicFile from './Mic'
 import './HomeView.scss'
 import SpeckyComponent from '../../../SpeckyComponent'
-
 const S = require('specky')
+import formFlickrUrl from './formFlickrUrl'
 
 // Your contact IDs:
 // 122593843@N04 - Images from the Wild
@@ -67,7 +67,7 @@ class HomeView extends SpeckyComponent {
   }
 
   render () {
-    // console.log('photo is: ', this.props.photo.photoData[0].id)
+    console.log('photo is: ', this.props.photo.photoData, formFlickrUrl(this.props.photo.photoData))
     return (
       <MuiThemeProvider muiTheme={MuiTheme}>
         <div>
@@ -77,7 +77,7 @@ class HomeView extends SpeckyComponent {
             onTouchTap={() => this.props.handleSearch()}
             label='Search'
              />
-          <Grid tilesData={this.props.photo.photoData} />
+          <Grid tilesData={formFlickrUrl(this.props.photo.photoData)} />
         </div>
       </MuiThemeProvider>
     )

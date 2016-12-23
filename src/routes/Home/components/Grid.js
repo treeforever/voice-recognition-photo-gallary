@@ -37,13 +37,11 @@ const Grid = S.fspec({
       style={styles.gridList}
     >
       <Subheader>photo gallery</Subheader>
-      {tilesData.map((tile) => (
+      {tilesData.map((tile, index) => (
         <GridTile
-          key={tile.id}
-          title={tile.title}
-          subtitle={<span>by <b>{tile.owner}</b></span>}
-        >
-          <img src={tile.img} />
+          key={index}
+          >
+          <img src={tile} />
         </GridTile>
       ))}
     </GridList>
