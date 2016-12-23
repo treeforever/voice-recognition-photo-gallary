@@ -82,7 +82,8 @@ app.post('/flickr', function (req, res) {
   // })
   let statusCode = null
   request
-    .get('https://api.flickr.com/services/rest/?method=flickr.people.getPublicPhotos&api_key=024a137e692e59cf1392e00dad1c486e&user_id=139501920%40N07&format=json&nojsoncallback=1&auth_token=72157678171713655-0ba9f7256abc8590&api_sig=30ca7a77ffb82ada7e6d48446b7541e2')
+    // .get('https://api.flickr.com/services/rest/?method=flickr.people.getPublicPhotos&api_key=024a137e692e59cf1392e00dad1c486e&user_id=139501920%40N07&format=json&nojsoncallback=1&auth_token=72157678171713655-0ba9f7256abc8590&api_sig=30ca7a77ffb82ada7e6d48446b7541e2')
+    .get(' https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=f6093785014e2540cc659c143706aef6&format=json&nojsoncallback=1&auth_token=72157676555769031-798307775786a302&api_sig=91ce1f068eaa53bf17fb6d981102d910')
     .pipe(res)
 })
 
