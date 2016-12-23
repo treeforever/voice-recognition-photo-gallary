@@ -1,4 +1,6 @@
-const defaultState = {}
+const defaultState = {
+  photoData: []
+}
 
 export default function reducer (state = defaultState, action) {
   switch (action.type) {
@@ -21,9 +23,10 @@ export default function reducer (state = defaultState, action) {
     }
 
     case 'HANDLE_SEARCH_FULFILLED': {
-      console.log('handle search request succeeded')
+      // console.log('parsed data: ', JSON.parse(action.payload))
       return {
-        ...state
+        ...state,
+        photoData: action.payload.data.photos.photo
       }
     }
 

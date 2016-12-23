@@ -24,7 +24,7 @@ const styles = {
 const Grid = S.fspec({
   args: S.cat(S.props({
     req: {
-      tilesData: S('ssi.grid')
+      // tilesData: S('ssi.grid')
     }
   }), S.zeroOrMore(S.any),
 ),
@@ -39,9 +39,9 @@ const Grid = S.fspec({
       <Subheader>photo gallery</Subheader>
       {tilesData.map((tile) => (
         <GridTile
-          key={tile.img}
+          key={tile.id}
           title={tile.title}
-          subtitle={<span>by <b>{tile.author}</b></span>}
+          subtitle={<span>by <b>{tile.owner}</b></span>}
         >
           <img src={tile.img} />
         </GridTile>

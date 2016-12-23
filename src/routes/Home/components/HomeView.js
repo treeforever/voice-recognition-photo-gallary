@@ -7,6 +7,8 @@ import Grid from './Grid'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import MuiTheme from '../../../components/MuiTheme'
 import RaisedButton from 'material-ui/RaisedButton'
+import injectTapEventPlugin from 'react-tap-event-plugin'
+injectTapEventPlugin()
 import MicFile from './Mic'
 import './HomeView.scss'
 import SpeckyComponent from '../../../SpeckyComponent'
@@ -18,28 +20,6 @@ const S = require('specky')
 // 9085558@N03 - Outdoortype.photo
 // 44351311@N04 - Susan Licht
 
-const tilesData = [
-  {
-    img: 'http://www.demilked.com/magazine/wp-content/uploads/2015/05/adorable-bird-animal-owl-photography-sasi-smith-fb.jpg',
-    title: 'owl babies',
-    author: 'jill111'
-  },
-  {
-    img: 'http://static.boredpanda.com/blog/wp-content/uploads/2016/07/best-iphone-photography-awards-winners-2016-fb__700-png.jpg',
-    title: 'Smiling foxes',
-    author: 'pashminu'
-  },
-  {
-    img: 'http://static.boredpanda.com/blog/wp-content/uploads/2015/12/rain-street-photography-glass-raindrops-oil-paintings-eduard-gordeev-17.jpg',
-    title: 'Blurred city',
-    author: 'Danson67'
-  },
-  {
-    img: 'https://static1.squarespace.com/static/5620463ee4b0d17f9945b588/t/57b39cbb8419c221bca284a7/1471388913639/Moments-by-lauren-Photographer-Hamilton-Ontario-Wedding-Lifestyle-Photography',
-    title: 'Cameras are ready',
-    author: 'fancycrave1'
-  }
-]
 console.log('annyang', annyang)
 
 class HomeView extends SpeckyComponent {
@@ -87,16 +67,17 @@ class HomeView extends SpeckyComponent {
   }
 
   render () {
+    // console.log('photo is: ', this.props.photo.photoData[0].id)
     return (
       <MuiThemeProvider muiTheme={MuiTheme}>
         <div>
           <MicFile.Mic onClick={this.handleMicOnClick} />
           <MicFile.MicOff onClick={this.handleMicOffClick} />
           <RaisedButton
-            onTouchTap={this.props.handleSearch()}
+            onTouchTap={() => this.props.handleSearch()}
             label='Search'
              />
-          <Grid tilesData={tilesData} />
+          <Grid tilesData={this.props.photo.photoData} />
         </div>
       </MuiThemeProvider>
     )
@@ -119,7 +100,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     micOn: state.mic.micOn,
-    state: state
+    photo: state.photo
   }
 }
 
