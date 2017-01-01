@@ -12,9 +12,7 @@ export const createRoutes = (store) => ({
   path        : '/',
   component   : CoreLayout,
   indexRoute  : Home,
-  childRoutes : [
-    TagRoute(store)
-  ]
+  childRoutes : [TagRoute]
 })
 
 /*  Note: childRoutes can be chunked or otherwise loaded programmatically
