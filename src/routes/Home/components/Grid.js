@@ -3,7 +3,7 @@ import IconButton from 'material-ui/IconButton'
 import Subheader from 'material-ui/Subheader'
 import { GridList, GridTile } from 'material-ui/GridList'
 import StarBorder from 'material-ui/svg-icons/toggle/star-border'
-const S = require('specky')
+const C = require('clausejs')
 
 const styles = {
   root: {
@@ -21,12 +21,12 @@ const styles = {
 /**
  * A simple example of a scrollable `GridList` containing a [Subheader](/#/components/subheader).
  */
-const Grid = S.fspec({
-  args: S.cat(S.props({
-    req: {
-      // tilesData: S('ssi.grid')
-    }
-  }), S.zeroOrMore(S.any),
+const Grid = C.fclause({
+  args: C.cat(C.shape({
+    // req: {
+    //   tilesData: C('say/grid')
+    // }
+  }), C.zeroOrMore(C.any),
 ),
   ret: () => true
 

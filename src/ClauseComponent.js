@@ -1,23 +1,16 @@
-const S = require('specky')
+const C = require('clausejs')
 import React from 'react'
 
-function enforce (spec, x) {
-  const r = spec.conform(x)
-  if (S.isProblem(r)) {
-    throw r
-  }
-}
-
-class SpeckyComponent extends React.Component {
+class ClauseComponent extends React.Component {
   constructor () {
     super()
     const { propSpecs } = this.constructor
     if (propSpecs) {
-      const nullablePropSpecs = S.or(S.isUndefined, S.isNull, propSpecs)
+      const nullablePropSpecs = C.or(propSpecs, C.isUndefined, C.isNull)
 
       const currWillUpdateFn = this.componentWillUpdate
       this.componentWillUpdate = (nextProps) => {
-        enforce(nullablePropSpecs, nextProps)
+        C.enforce(nullablePropSpecs, nextProps)
         if (currWillUpdateFn) {
           return currWillUpdateFn.apply(this, arguments)
         }
@@ -26,7 +19,7 @@ class SpeckyComponent extends React.Component {
 
       const currWillMountFn = this.componentWillMount
       this.componentWillMount = () => {
-        enforce(nullablePropSpecs, this.props)
+        C.enforce(nullablePropSpecs, this.props)
         if (currWillMountFn) {
           return currWillMountFn.apply(this, arguments)
         }
@@ -36,4 +29,4 @@ class SpeckyComponent extends React.Component {
   }
 }
 
-export default SpeckyComponent
+export default ClauseComponent

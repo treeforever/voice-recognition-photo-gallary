@@ -1,18 +1,11 @@
-const S = require('specky')
+const C = require('clausejs')
 
-S('ssi.photo.url', S.isStr)
 
-S('ssi.photo', S.props({
-  required: {
-    title: S.isStr,
-    author: S.isStr,
-    img: S('ssi.photo.url')
-  }
-}))
+C('say/photo', C.isStr);
 
-S('ssi.grid', S.collOf(S('ssi.photo')))
+C('say/grid', C.collOf(C('say/photo')))
 
 //
-// console.log(S('ssi.grid').conform([
+// console.log(S('say/grid').conform([
 //   { title: 'hello', author: 'h', img: 'http://www.abc.com' }
 // ]))

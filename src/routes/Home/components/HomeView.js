@@ -11,8 +11,8 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 import MicFile from './Mic'
 import './HomeView.scss'
-import SpeckyComponent from '../../../SpeckyComponent'
-const S = require('specky')
+import ClauseComponent from '../../../ClauseComponent'
+const C = require('clausejs')
 import formFlickrUrl from './formFlickrUrl'
 
 // Your contact IDs:
@@ -22,8 +22,8 @@ import formFlickrUrl from './formFlickrUrl'
 
 console.log('annyang', annyang)
 
-class HomeView extends SpeckyComponent {
-  static propSpecs = S.props({
+class HomeView extends ClauseComponent {
+  static propSpecs = C.shape({
     required: {
 
     },
