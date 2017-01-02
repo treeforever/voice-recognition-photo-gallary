@@ -5,8 +5,3 @@ const port = config.server_port
 
 server.listen(port)
 debug(`Server is now running at http://localhost:${port}.`)
-
-// server.get('/', function (req, res) {
-//   console.log('inside server.get')
-//   res.send('hello world')
-// })

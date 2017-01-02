@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react'
-import { browserHistory, Router } from 'react-router'
+import { Router, Route, Link, IndexLink, browserHistory } from 'react-router'
 import { Provider } from 'react-redux'
+import Header from '../components/Header'
+import HomeView from '../routes/Home'
+import TagView from '../routes/Tag'
 
 class AppContainer extends Component {
   static propTypes = {
@@ -16,9 +19,19 @@ class AppContainer extends Component {
     const { routes, store } = this.props
 
     return (
+  
+ 
       <Provider store={store}>
+           
+
         <div style={{ height: '100%' }}>
-          <Router history={browserHistory} children={routes} />
+          <Header />
+          <Router history={browserHistory}>
+            <Route path="/" component={HomeView}>
+              <Route path="/tag" component={TagView}/>
+            </Route>
+          </Router>
+          
         </div>
       </Provider>
     )

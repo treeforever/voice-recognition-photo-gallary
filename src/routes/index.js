@@ -1,7 +1,7 @@
 // We only need to import the modules necessary for initial render
 require('../specs')
 
-import CoreLayout from '../layouts/CoreLayout/CoreLayout'
+import Header from '../components/Header'
 import Home from './Home'
 import TagRoute from './Tag'
 
@@ -10,9 +10,11 @@ import TagRoute from './Tag'
 
 export const createRoutes = (store) => ({
   path        : '/',
-  component   : CoreLayout,
+  component   : Header,
   indexRoute  : Home,
-  childRoutes : [TagRoute]
+  childRoutes : [
+     TagRoute(store)
+   ]
 })
 
 /*  Note: childRoutes can be chunked or otherwise loaded programmatically
